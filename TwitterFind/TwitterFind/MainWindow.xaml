@@ -1,8 +1,37 @@
-﻿<Window x:Class="TwitterFind.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="TwitterFind.MainWindow"
+        Title="MainWindow" Height="648.754" Width="1054.907">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="393*"/>
+            <ColumnDefinition Width="124*"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="796">
+            <WindowsPresentation:GMapControl x:Name="MainMap" HorizontalAlignment="Left" Height="621" Margin="-4,0,0,-2" VerticalAlignment="Top" Width="800" MaxZoom="24" MinZoom="1" Zoom="13"/>
+        </Grid>
+        <GroupBox x:Name="Map_Type" Grid.Column="1" Header="Map Type" HorizontalAlignment="Left" Height="69" Margin="30,21,0,0" VerticalAlignment="Top" Width="194">
+            <Grid HorizontalAlignment="Left" Height="53" Margin="4,-6,0,0" VerticalAlignment="Top" Width="174">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="31*"/>
+                    <ColumnDefinition Width="56*"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="comboBoxMapType" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="128" SelectedItem="{Binding MapProvider, ElementName=MainMap}" Grid.ColumnSpan="2"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Coordinates" HorizontalAlignment="Left" Height="184" Margin="30,116,0,0" VerticalAlignment="Top" Width="190">
+            <Grid HorizontalAlignment="Left" Height="170" Margin="0,0,0,-8" VerticalAlignment="Top" Width="181">
+                <TextBox x:Name="textBoxLat" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+                <TextBox x:Name="textBoxLong" HorizontalAlignment="Left" Height="31" Margin="10,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+                <TextBox x:Name="textBoxGeo" HorizontalAlignment="Left" Height="30" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+                <Button x:Name="button2" Content="Search&#xD;&#xA;" HorizontalAlignment="Left" Height="32" Margin="10,125,0,0" VerticalAlignment="Top" Width="124" Click="button2_Click"></Button>
+                <Label Content="LAT" HorizontalAlignment="Left" Height="32" Margin="136,9,0,0" VerticalAlignment="Top" Width="45"/>
+                <Label Content="LONG" HorizontalAlignment="Left" Height="31" Margin="134,46,0,0" VerticalAlignment="Top" Width="47"/>
+                <Label Content="CITY" HorizontalAlignment="Left" Height="30" Margin="136,82,0,0" VerticalAlignment="Top" Width="45"/>
+            </Grid>
+        </GroupBox>
+
     </Grid>
 </Window>
