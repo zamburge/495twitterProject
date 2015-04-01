@@ -17,6 +17,9 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsPresentation;
 using System.Net;
+using TwitterFind.events;
+using TwitterFind.model;
+
 
 namespace TwitterFind
 {
@@ -50,7 +53,7 @@ namespace TwitterFind
 
             // config map
             MainMap.MapProvider = GMapProviders.OpenStreetMap;
-            MainMap.Position = new PointLatLng(54.6961334816182, 25.2985095977783);
+            MainMap.Position = new PointLatLng(38, -85);
 
             comboBoxMapType.ItemsSource = GMapProviders.List;
             comboBoxMapType.DisplayMemberPath = "Name";
