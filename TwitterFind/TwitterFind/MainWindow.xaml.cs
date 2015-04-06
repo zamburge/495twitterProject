@@ -19,6 +19,9 @@ using GMap.NET.WindowsPresentation;
 using System.Net;
 using TwitterFind.events;
 using TwitterFind.model;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 
 
 namespace TwitterFind
