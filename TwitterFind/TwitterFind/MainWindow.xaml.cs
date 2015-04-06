@@ -17,8 +17,7 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsPresentation;
 using System.Net;
-using TwitterFind.events;
-using TwitterFind.model;
+using TwitterFind;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -37,6 +36,7 @@ namespace TwitterFind
 
         public MainWindow()
         {
+            events.download_serialized_json_data();
             InitializeComponent();
 
             // add your custom map db provider
