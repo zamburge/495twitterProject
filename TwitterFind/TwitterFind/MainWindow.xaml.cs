@@ -21,6 +21,15 @@ using TwitterFind;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Data;
+using System.Windows.Data;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Navigation;
+using System.Windows.Documents;
+using System.Windows.Shapes;
+using System.Windows.Media;
+using Newtonsoft.Json;
 
 
 namespace TwitterFind
@@ -33,26 +42,14 @@ namespace TwitterFind
         PointLatLng start;
         PointLatLng end;
         GMapMarker currentMarker;
+        String json_data = "";
 
         public MainWindow()
         {
-            events.download_serialized_json_data();
+            
             InitializeComponent();
 
-            // add your custom map db provider
-            //MySQLPureImageCache ch = new MySQLPureImageCache();
-            //ch.ConnectionString = @"server=sql2008;User Id=trolis;Persist Security Info=True;database=gmapnetcache;password=trolis;";
-            //MainMap.Manager.SecondaryCache = ch;
-
-            // set your proxy here if need
-            //GMapProvider.IsSocksProxy = true;
-            //GMapProvider.WebProxy = new WebProxy("127.0.0.1", 1080);
-            //GMapProvider.WebProxy.Credentials = new NetworkCredential("ogrenci@bilgeadam.com", "bilgeada");
-            // or
-            //GMapProvider.WebProxy = WebRequest.DefaultWebProxy;
-            //
-
-            // set cache mode only if no internet avaible
+            
 
             // config map
             MainMap.MapProvider = GMapProviders.OpenStreetMap;
@@ -61,6 +58,11 @@ namespace TwitterFind
             comboBoxMapType.ItemsSource = GMapProviders.List;
             comboBoxMapType.DisplayMemberPath = "Name";
             comboBoxMapType.SelectedItem = MainMap.MapProvider;
+
+            
+
+            events.download_serialized_json_data(json_data);
+            events.parse_json(json_data, MainMap);
 
         }
 
@@ -94,7 +96,9 @@ namespace TwitterFind
                     }
                 }
             }
-
+       
         }
+
+
     
 }
