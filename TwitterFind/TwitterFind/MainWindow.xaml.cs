@@ -55,6 +55,8 @@ namespace TwitterFind
             MainMap.MapProvider = GMapProviders.OpenStreetMap;
             MainMap.Position = new PointLatLng(38, -85);
 
+            //MainMap.OnPositionChanged += new PositionChanged(MainMap_OnCurrentPositionChanged);
+
             comboBoxMapType.ItemsSource = GMapProviders.List;
             comboBoxMapType.DisplayMemberPath = "Name";
             comboBoxMapType.SelectedItem = MainMap.MapProvider;
@@ -65,7 +67,7 @@ namespace TwitterFind
             events.parse_json(json_data, MainMap);
 
         }
-
+        
             private void button2_Click(object sender, RoutedEventArgs e)
       {
          try

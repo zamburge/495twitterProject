@@ -58,6 +58,8 @@ namespace TwitterFind
                 {
                     double latitude = Convert.ToDouble(row["lat"]);
                     double longitude = Convert.ToDouble(row["long"]);
+                    String text = (Convert.ToString(row["text"]));
+                    
 
                     GMapMarker marker = new GMapMarker(new PointLatLng(latitude, longitude));
                     marker.ZIndex = int.MaxValue;
@@ -67,6 +69,9 @@ namespace TwitterFind
                     el.Fill = Brushes.Black;
                     marker.Shape = el;
                     map.Markers.Add(marker);
+
+                    ToolTip message = new ToolTip();
+         
 
                 }
             }
