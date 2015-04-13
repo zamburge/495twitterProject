@@ -61,7 +61,7 @@ namespace TwitterFind
 
             
 
-            events.download_serialized_json_data(json_data);
+            json_data = events.download_serialized_json_data();
             events.parse_json(json_data, MainMap);
 
         }

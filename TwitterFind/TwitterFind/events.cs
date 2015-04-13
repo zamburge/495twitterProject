@@ -30,7 +30,7 @@ namespace TwitterFind
     class events
     {
 
-        public static String download_serialized_json_data(String j)
+        public static String download_serialized_json_data()
         {
             var url = "http://enter77.ius.edu/~cjkimmer/t2.json";
             using (var w = new WebClient())
@@ -62,9 +62,9 @@ namespace TwitterFind
                     GMapMarker marker = new GMapMarker(new PointLatLng(latitude, longitude));
                     marker.ZIndex = int.MaxValue;
                     Ellipse el = new Ellipse();
-                    el.Height = 7;
-                    el.Width = 7;
-                    el.Fill = Brushes.Aqua;
+                    el.Height = 15;
+                    el.Width = 15;
+                    el.Fill = Brushes.Black;
                     marker.Shape = el;
                     map.Markers.Add(marker);
 
