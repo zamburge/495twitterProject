@@ -28,7 +28,7 @@ namespace TwitterFind
     {
         public static String download_serialized_json_data()
         {
-            var url = "http://enter77.ius.edu:3221/all?count=1000";
+            var url = "http://enter77.ius.edu:3221/all?count=10000";
             using (var w = new WebClient())
             {
                 var json = string.Empty;

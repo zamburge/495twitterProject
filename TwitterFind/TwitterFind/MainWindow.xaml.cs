@@ -50,6 +50,7 @@ namespace TwitterFind
             // config map
             MainMap.MapProvider = GMapProviders.OpenStreetMap;
             MainMap.Position = new PointLatLng(38, -85);
+            MainMap.MapProvider = GMapProviders.GoogleMap;
 
             //Map Events
             MainMap.ShowTileGridLines = true;
