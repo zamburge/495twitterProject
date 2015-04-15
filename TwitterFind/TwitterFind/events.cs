@@ -22,28 +22,20 @@ using System.Windows.Documents;
 using System.Windows.Shapes;
 using System.Windows.Media;
 
-
-
 namespace TwitterFind
 {
-
     class events
     {
-
         public static String download_serialized_json_data()
         {
             var url = "http://enter77.ius.edu/~cjkimmer/t2.json";
             using (var w = new WebClient())
             {
-
                 var json = string.Empty;
                 // attempt to download JSON data as a string
-                
                     json = w.DownloadString(url);
-
                     return json;
-                }
-               
+                }          
         }
 
         public static void parse_json(String json_data, GMapControl map)
@@ -59,8 +51,6 @@ namespace TwitterFind
                     double latitude = Convert.ToDouble(row["lat"]);
                     double longitude = Convert.ToDouble(row["long"]);
                     String text = (Convert.ToString(row["text"]));
-                    
-
                     GMapMarker marker = new GMapMarker(new PointLatLng(latitude, longitude));
                     marker.ZIndex = int.MaxValue;
                     Ellipse el = new Ellipse();
@@ -69,16 +59,12 @@ namespace TwitterFind
                     el.Fill = Brushes.Black;
                     marker.Shape = el;
                     map.Markers.Add(marker);
-
                     ToolTip message = new ToolTip();
-         
-
                 }
             }
             catch (Exception e){
                 Console.WriteLine(e.Message);
             }
-
         }
     }
 }
