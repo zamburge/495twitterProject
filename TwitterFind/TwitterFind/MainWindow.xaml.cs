@@ -63,7 +63,7 @@ namespace TwitterFind
             json_data = events.download_serialized_json_data();
             events.parse_json(json_data, MainMap);
         }
-        
+     
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -92,6 +92,7 @@ namespace TwitterFind
                         currentMarker.Position = MainMap.Position;
                     }
                 }
-          }        
+          }
+        
      }   
 }

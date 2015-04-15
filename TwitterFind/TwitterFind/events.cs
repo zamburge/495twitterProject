@@ -28,7 +28,7 @@ namespace TwitterFind
     {
         public static String download_serialized_json_data()
         {
-            var url = "http://enter77.ius.edu/~cjkimmer/t2.json";
+            var url = "http://enter77.ius.edu:3221/all?count=1000";
             using (var w = new WebClient())
             {
                 var json = string.Empty;
@@ -49,7 +49,7 @@ namespace TwitterFind
                 foreach (DataRow row in dataTable.Rows)
                 {
                     double latitude = Convert.ToDouble(row["lat"]);
-                    double longitude = Convert.ToDouble(row["long"]);
+                    double longitude = Convert.ToDouble(row["lng"]);
                     String text = (Convert.ToString(row["text"]));
                     GMapMarker marker = new GMapMarker(new PointLatLng(latitude, longitude));
                     marker.ZIndex = int.MaxValue;

@@ -21,17 +21,26 @@
 
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="Coordinates" HorizontalAlignment="Left" Height="184" Margin="30,116,0,0" VerticalAlignment="Top" Width="190">
+        <GroupBox Grid.Column="1" Header="Coordinates" HorizontalAlignment="Left" Height="184" Margin="30,104,0,0" VerticalAlignment="Top" Width="190">
             <Grid HorizontalAlignment="Left" Height="170" Margin="0,0,0,-8" VerticalAlignment="Top" Width="181">
                 <TextBox x:Name="textBoxLat" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
                 <TextBox x:Name="textBoxLong" HorizontalAlignment="Left" Height="31" Margin="10,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
-                <TextBox x:Name="textBoxGeo" HorizontalAlignment="Left" Height="30" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+                <TextBox x:Name="textBoxGeo" HorizontalAlignment="Left" Height="30" Margin="7,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" KeyUp="textBoxGeo_KeyUp"/>
                 <Button x:Name="button2" Content="Search&#xD;&#xA;" HorizontalAlignment="Left" Height="32" Margin="10,125,0,0" VerticalAlignment="Top" Width="124" Click="button2_Click"></Button>
                 <Label Content="LAT" HorizontalAlignment="Left" Height="32" Margin="136,9,0,0" VerticalAlignment="Top" Width="45"/>
                 <Label Content="LONG" HorizontalAlignment="Left" Height="31" Margin="134,46,0,0" VerticalAlignment="Top" Width="47"/>
                 <Label Content="CITY" HorizontalAlignment="Left" Height="30" Margin="136,82,0,0" VerticalAlignment="Top" Width="45"/>
             </Grid>
         </GroupBox>
+        <GroupBox x:Name="KeywordSearchGroup" Grid.Column="1" Header="Search Function" HorizontalAlignment="Left" Height="193" Margin="30,314,0,0" VerticalAlignment="Top" Width="190"/>
+        <Grid x:Name="KeywordSearchGrid" Grid.Column="1" HorizontalAlignment="Left" Height="229" Margin="34,314,0,0" VerticalAlignment="Top" Width="190">
+            <TextBox x:Name="KeywordSearchText" HorizontalAlignment="Left" Height="31" Margin="10,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+            <Button x:Name="KeywordSearchButton" Content="Key Search" HorizontalAlignment="Left" Height="31" Margin="10,58,0,0" VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="KeywordSearchLabel" Content="Keyword" HorizontalAlignment="Left" Height="31" Margin="115,22,0,0" VerticalAlignment="Top" Width="70"/>
+            <TextBox x:Name="RadialSearchText" HorizontalAlignment="Left" Height="31" Margin="10,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+            <Button x:Name="RadialSearchButton" Content="Radial Search" HorizontalAlignment="Left" Height="31" Margin="10,146,0,0" VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="RadialSearchLabel" Content="Location" HorizontalAlignment="Left" Height="31" Margin="115,110,0,0" VerticalAlignment="Top" Width="70"/>
+        </Grid>
 
     </Grid>
 </Window>
