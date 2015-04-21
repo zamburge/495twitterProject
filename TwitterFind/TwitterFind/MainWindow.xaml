@@ -9,37 +9,39 @@
             <ColumnDefinition Width="124*"/>
         </Grid.ColumnDefinitions>
         <Grid HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="796">
-            <WindowsPresentation:GMapControl x:Name="MainMap" HorizontalAlignment="Left" Height="621" Margin="-4,0,0,-2" VerticalAlignment="Top" Width="800" MaxZoom="24" MinZoom="1" Zoom="13"/>
+            <WindowsPresentation:GMapControl x:Name="MainMap" HorizontalAlignment="Left" Height="621" Margin="-4,0,0,-2" VerticalAlignment="Top" Width="800" MaxZoom="24" MinZoom="1" Zoom="6"/>
         </Grid>
-        <GroupBox x:Name="Map_Type" Grid.Column="1" Header="Map Type" HorizontalAlignment="Left" Height="69" Margin="30,21,0,0" VerticalAlignment="Top" Width="194">
+        <GroupBox x:Name="Map_Type" Grid.Column="1" Header="Map Type" HorizontalAlignment="Left" Height="69" Margin="30,10,0,0" VerticalAlignment="Top" Width="194">
             <Grid HorizontalAlignment="Left" Height="53" Margin="4,-6,0,0" VerticalAlignment="Top" Width="174">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="31*"/>
                     <ColumnDefinition Width="56*"/>
                 </Grid.ColumnDefinitions>
-                <ComboBox x:Name="comboBoxMapType" HorizontalAlignment="Left" Height="29" Margin="10,10,0,0" VerticalAlignment="Top" Width="128" SelectedItem="{Binding MapProvider, ElementName=MainMap}" Grid.ColumnSpan="2"/>
+                <ComboBox x:Name="comboBoxMapType" HorizontalAlignment="Left" Height="29" Margin="0,14,0,0" VerticalAlignment="Top" Width="174" SelectedItem="{Binding MapProvider, ElementName=MainMap}" Grid.ColumnSpan="2"/>
 
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="Coordinates" HorizontalAlignment="Left" Height="184" Margin="30,104,0,0" VerticalAlignment="Top" Width="190">
-            <Grid HorizontalAlignment="Left" Height="170" Margin="0,0,0,-8" VerticalAlignment="Top" Width="181">
+        <GroupBox Grid.Column="1" Header="Coordinates" HorizontalAlignment="Left" Height="184" Margin="30,84,0,0" VerticalAlignment="Top" Width="190">
+            <Grid HorizontalAlignment="Left" Height="170" Margin="-5,0,-12,-8" VerticalAlignment="Top" Width="191">
                 <TextBox x:Name="textBoxLat" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
                 <TextBox x:Name="textBoxLong" HorizontalAlignment="Left" Height="31" Margin="10,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
                 <TextBox x:Name="textBoxGeo" HorizontalAlignment="Left" Height="30" Margin="7,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" KeyUp="textBoxGeo_KeyUp"/>
-                <Button x:Name="button2" Content="Search&#xD;&#xA;" HorizontalAlignment="Left" Height="32" Margin="10,125,0,0" VerticalAlignment="Top" Width="124" Click="button2_Click"></Button>
+                <Button x:Name="button2" Content="Change Location!&#xA;" HorizontalAlignment="Left" Height="32" Margin="7,128,0,0" VerticalAlignment="Top" Width="174" Click="button2_Click"></Button>
                 <Label Content="LAT" HorizontalAlignment="Left" Height="32" Margin="136,9,0,0" VerticalAlignment="Top" Width="45"/>
                 <Label Content="LONG" HorizontalAlignment="Left" Height="31" Margin="134,46,0,0" VerticalAlignment="Top" Width="47"/>
                 <Label Content="CITY" HorizontalAlignment="Left" Height="30" Margin="136,82,0,0" VerticalAlignment="Top" Width="45"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="KeywordSearchGroup" Grid.Column="1" Header="Search Function" HorizontalAlignment="Left" Height="193" Margin="30,314,0,0" VerticalAlignment="Top" Width="190"/>
-        <Grid x:Name="KeywordSearchGrid" Grid.Column="1" HorizontalAlignment="Left" Height="229" Margin="34,314,0,0" VerticalAlignment="Top" Width="190">
+        <GroupBox x:Name="KeywordSearchGroup" Grid.Column="1" Header="Search Function" HorizontalAlignment="Left" Height="268" Margin="30,274,0,0" VerticalAlignment="Top" Width="190"/>
+        <Grid x:Name="KeywordSearchGrid" Grid.Column="1" HorizontalAlignment="Left" Height="268" Margin="30,274,0,0" VerticalAlignment="Top" Width="190">
             <TextBox x:Name="KeywordSearchText" HorizontalAlignment="Left" Height="31" Margin="10,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-            <Button x:Name="KeywordSearchButton" Content="Key Search" HorizontalAlignment="Left" Height="31" Margin="10,58,0,0" VerticalAlignment="Top" Width="100"/>
+            <Button x:Name="KeywordSearchButton" Content="Key Search" HorizontalAlignment="Left" Height="31" Margin="10,74,0,0" VerticalAlignment="Top" Width="170" Click="KeyButton_Click"/>
             <Label x:Name="KeywordSearchLabel" Content="Keyword" HorizontalAlignment="Left" Height="31" Margin="115,22,0,0" VerticalAlignment="Top" Width="70"/>
-            <TextBox x:Name="RadialSearchText" HorizontalAlignment="Left" Height="31" Margin="10,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
-            <Button x:Name="RadialSearchButton" Content="Radial Search" HorizontalAlignment="Left" Height="31" Margin="10,146,0,0" VerticalAlignment="Top" Width="100"/>
-            <Label x:Name="RadialSearchLabel" Content="Location" HorizontalAlignment="Left" Height="31" Margin="115,110,0,0" VerticalAlignment="Top" Width="70"/>
+            <TextBox x:Name="LatSearchText" HorizontalAlignment="Left" Height="31" Margin="10,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+            <Button x:Name="AreaSearchButton" Content="Area Search" HorizontalAlignment="Left" Height="31" Margin="10,227,0,0" VerticalAlignment="Top" Width="170" Click="Area_Search_Click"/>
+            <Label x:Name="LatSearchLabel" Content="Latitude" HorizontalAlignment="Left" Height="31" Margin="115,127,0,0" VerticalAlignment="Top" Width="70"/>
+            <TextBox x:Name="LongSearchText" HorizontalAlignment="Left" Height="31" Margin="10,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+            <Label x:Name="LongSearchLabel" Content="Longitude" HorizontalAlignment="Left" Height="31" Margin="115,172,0,0" VerticalAlignment="Top" Width="70"/>
         </Grid>
 
     </Grid>

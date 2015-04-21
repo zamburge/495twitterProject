@@ -21,6 +21,8 @@ using System.Windows.Navigation;
 using System.Windows.Documents;
 using System.Windows.Shapes;
 using System.Windows.Media;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace TwitterFind
 {
@@ -28,7 +30,7 @@ namespace TwitterFind
     {
         public static String download_serialized_json_data()
         {
-            var url = "http://enter77.ius.edu:3221/all?count=10000";
+            var url = "http://enter77.ius.edu:3221/all?count=7500";
             using (var w = new WebClient())
             {
                 var json = string.Empty;
@@ -42,6 +44,7 @@ namespace TwitterFind
         {
             DataSet dataset;
             DataTable dataTable = null;
+
             try
             {
                 dataset = JsonConvert.DeserializeObject<DataSet>(json_data);
@@ -54,10 +57,11 @@ namespace TwitterFind
                     GMapMarker marker = new GMapMarker(new PointLatLng(latitude, longitude));
                     marker.ZIndex = int.MaxValue;
                     Ellipse el = new Ellipse();
-                    el.Height = 15;
-                    el.Width = 15;
-                    el.Fill = Brushes.Black;
+                    el.Height = 5;
+                    el.Width = 5;
+                    el.Fill = Brushes.DarkRed;
                     marker.Shape = el;
+                   // Markers(this, el, text);
                     map.Markers.Add(marker);
                     ToolTip message = new ToolTip();
                 }
@@ -66,5 +70,19 @@ namespace TwitterFind
                 Console.WriteLine(e.Message);
             }
         }
+
+        public static String download_search_json(String concat)
+        {
+            
+            using (var w = new WebClient())
+            {
+                var json = string.Empty;
+                // attempt to download JSON data as a string
+                json = w.DownloadString(concat);
+                return json;
+            }
+        }
+
+        
     }
 }

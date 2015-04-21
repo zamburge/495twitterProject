@@ -42,6 +42,7 @@ namespace TwitterFind
         PointLatLng end;
         GMapMarker currentMarker;
         String json_data = "";
+        String search_data = "";
 
         public MainWindow()
         {            
@@ -94,6 +95,47 @@ namespace TwitterFind
                     }
                 }
           }
-        
+
+         private void KeyButton_Click(object sender, RoutedEventArgs e)
+         {
+             //clear Markers off map
+             var clear = MainMap.Markers.Where(p => p != null && p != currentMarker);
+             if (clear != null)
+             {
+                 for (int i = 0; i < clear.Count(); i++)
+                 {
+                     MainMap.Markers.Remove(clear.ElementAt(i));
+                     i--;
+                 }
+             }
+             String s = this.KeywordSearchText.Text;
+             String buildUrl = "http://enter77.ius.edu:3221/text?terms=" + s + "&count=10";
+             WebUtility.UrlEncode(buildUrl);
+             var url = buildUrl;
+
+             search_data = events.download_search_json(url);
+             events.parse_json(search_data, MainMap);
+         }
+
+         private void Area_Search_Click(object sender, RoutedEventArgs e)
+         {
+             //clear Markers off map
+             var clear = MainMap.Markers.Where(p => p != null && p != currentMarker);
+             if (clear != null)
+             {
+                 for (int i = 0; i < clear.Count(); i++)
+                 {
+                     MainMap.Markers.Remove(clear.ElementAt(i));
+                     i--;
+                 }
+             }
+             String latSearch = this.LatSearchText.Text;
+             String longSearch = this.LongSearchText.Text;
+             String buildUrl = "http://enter77.ius.edu:3221/near?lat=" + latSearch + "&lng=" + longSearch + "&count=10";
+             var url = buildUrl;
+             Uri.EscapeDataString(url);
+             search_data = events.download_search_json(url);
+             events.parse_json(search_data, MainMap);
+         }              
      }   
 }
