@@ -54,7 +54,7 @@ namespace TwitterFind
             MainMap.MapProvider = GMapProviders.GoogleMap;
 
             //Map Events
-            MainMap.ShowTileGridLines = true;
+            MainMap.ShowTileGridLines = false;
 
             //MainMap.OnPositionChanged += new PositionChanged(MainMap_OnCurrentPositionChanged);
             comboBoxMapType.ItemsSource = GMapProviders.List;
@@ -109,10 +109,10 @@ namespace TwitterFind
                  }
              }
              String s = this.KeywordSearchText.Text;
-             String buildUrl = "http://enter77.ius.edu:3221/text?terms=" + s + "&count=10";
+             String buildUrl = "http://enter77.ius.edu:3221/text?terms=" + s + "&count=7500";
              WebUtility.UrlEncode(buildUrl);
              var url = buildUrl;
-
+             Console.WriteLine(url);
              search_data = events.download_search_json(url);
              events.parse_json(search_data, MainMap);
          }
@@ -131,9 +131,10 @@ namespace TwitterFind
              }
              String latSearch = this.LatSearchText.Text;
              String longSearch = this.LongSearchText.Text;
-             String buildUrl = "http://enter77.ius.edu:3221/near?lat=" + latSearch + "&lng=" + longSearch + "&count=10";
+             String buildUrl = "http://enter77.ius.edu:3221/near?lat=" + latSearch + "&lng=" + longSearch + "&count=5000";
              var url = buildUrl;
              Uri.EscapeDataString(url);
+             Console.WriteLine(url);
              search_data = events.download_search_json(url);
              events.parse_json(search_data, MainMap);
          }              
