@@ -23,13 +23,11 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Data;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Navigation;
 using System.Windows.Documents;
 using System.Windows.Shapes;
-using System.Windows.Media;
 using Newtonsoft.Json;
+using System.Web;
 
 namespace TwitterFind
 {
@@ -43,10 +41,13 @@ namespace TwitterFind
         GMapMarker currentMarker;
         String json_data = "";
         String search_data = "";
+        events theController;
 
         public MainWindow()
         {            
             InitializeComponent();
+
+            theController = new events(this);
 
             // config map
             MainMap.MapProvider = GMapProviders.OpenStreetMap;
@@ -62,8 +63,8 @@ namespace TwitterFind
             comboBoxMapType.SelectedItem = MainMap.MapProvider;
 
             //Execute JSON data
-            json_data = events.download_serialized_json_data();
-            events.parse_json(json_data, MainMap);
+            json_data = theController.download_serialized_json_data();
+            theController.parse_json(json_data, MainMap);
         }
      
         private void button2_Click(object sender, RoutedEventArgs e)
@@ -113,8 +114,8 @@ namespace TwitterFind
              WebUtility.UrlEncode(buildUrl);
              var url = buildUrl;
              Console.WriteLine(url);
-             search_data = events.download_search_json(url);
-             events.parse_json(search_data, MainMap);
+             search_data = theController.download_search_json(url);
+             theController.parse_json(search_data, MainMap);
          }
 
          private void Area_Search_Click(object sender, RoutedEventArgs e)
@@ -131,12 +132,12 @@ namespace TwitterFind
              }
              String latSearch = this.LatSearchText.Text;
              String longSearch = this.LongSearchText.Text;
-             String buildUrl = "http://enter77.ius.edu:3221/near?lat=" + latSearch + "&lng=" + longSearch + "&count=5000";
+             String buildUrl = "http://enter77.ius.edu:3221/near?lat=" + latSearch + "&lng=" + longSearch + "&count=7500";
              var url = buildUrl;
              Uri.EscapeDataString(url);
              Console.WriteLine(url);
-             search_data = events.download_search_json(url);
-             events.parse_json(search_data, MainMap);
+             search_data = theController.download_search_json(url);
+             theController.parse_json(search_data, MainMap);
          }              
      }   
 }

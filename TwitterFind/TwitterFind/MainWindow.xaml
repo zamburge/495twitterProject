@@ -2,14 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:WindowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation" x:Class="TwitterFind.MainWindow"
-        Title="MainWindow" Height="648.754" Width="1054.907">
+        Title="MainWindow" Height="759.754" Width="1469.907">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="393*"/>
-            <ColumnDefinition Width="124*"/>
+            <ColumnDefinition Width="605*"/>
+            <ColumnDefinition Width="126*"/>
         </Grid.ColumnDefinitions>
         <Grid HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="796">
-            <WindowsPresentation:GMapControl x:Name="MainMap" HorizontalAlignment="Left" Height="621" Margin="-4,0,0,-2" VerticalAlignment="Top" Width="800" MaxZoom="24" MinZoom="1" Zoom="6"/>
+            <WindowsPresentation:GMapControl x:Name="MainMap" HorizontalAlignment="Left" Height="719" Margin="-4,0,-357,-100" VerticalAlignment="Top" Width="1157" MaxZoom="24" MinZoom="1" Zoom="6"/>
         </Grid>
         <GroupBox x:Name="Map_Type" Grid.Column="1" Header="Map Type" HorizontalAlignment="Left" Height="69" Margin="30,10,0,0" VerticalAlignment="Top" Width="194">
             <Grid HorizontalAlignment="Left" Height="53" Margin="4,-6,0,0" VerticalAlignment="Top" Width="174">

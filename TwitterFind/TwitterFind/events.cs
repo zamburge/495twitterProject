@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using TwitterFind;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System.Net;
 using Newtonsoft.Json;
 using System.IO;
@@ -28,7 +27,13 @@ namespace TwitterFind
 {
     class events
     {
-        public static String download_serialized_json_data()
+        MainWindow theMainWindow;
+
+        public events(MainWindow mainWindow)
+        {
+            theMainWindow = mainWindow;
+        }
+        public String download_serialized_json_data()
         {
             var url = "http://enter77.ius.edu:3221/all?count=7500";
             using (var w = new WebClient())
@@ -40,7 +45,7 @@ namespace TwitterFind
                 }          
         }
 
-        public static void parse_json(String json_data, GMapControl map)
+        public void parse_json(String json_data, GMapControl map)
         {
             DataSet dataset;
             DataTable dataTable = null;
@@ -55,15 +60,12 @@ namespace TwitterFind
                     double longitude = Convert.ToDouble(row["lng"]);
                     String text = (Convert.ToString(row["text"]));
                     GMapMarker marker = new GMapMarker(new PointLatLng(latitude, longitude));
-                    marker.ZIndex = int.MaxValue;
-                    Ellipse el = new Ellipse();
-                    el.Height = 5;
-                    el.Width = 5;
-                    el.Fill = Brushes.DarkRed;
-                    marker.Shape = el;
-                   // Markers(this, el, text);
-                    map.Markers.Add(marker);
-                    ToolTip message = new ToolTip();
+                    {
+                        marker.Shape = new Marker(theMainWindow, marker, text);
+                        marker.Offset = new System.Windows.Point(-15, -15);
+                        marker.ZIndex = int.MaxValue;
+                        map.Markers.Add(marker);
+                    }
                 }
             }
             catch (Exception e){
@@ -71,7 +73,7 @@ namespace TwitterFind
             }
         }
 
-        public static String download_search_json(String concat)
+        public String download_search_json(String concat)
         {
             
             using (var w = new WebClient())
