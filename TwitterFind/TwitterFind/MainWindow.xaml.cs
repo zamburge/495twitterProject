@@ -28,6 +28,8 @@ using System.Windows.Documents;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.Web;
+using Leap;
+using Vector = Leap.Vector;
 
 namespace TwitterFind
 {
@@ -42,6 +44,7 @@ namespace TwitterFind
         String json_data = "";
         String search_data = "";
         events theController;
+        private CustomHandler handler;
 
         public MainWindow()
         {            
@@ -65,6 +68,18 @@ namespace TwitterFind
             //Execute JSON data
             json_data = theController.download_serialized_json_data();
             theController.parse_json(json_data, MainMap);
+            try
+            {
+                handler = new CustomHandler();
+                this.handler.Listener.OnGestureMade += GestureHandler;
+            }
+            catch
+            {
+
+            }
+
+            LeapHelpDisplayButton.Click += leapHelpVisible;
+            ReturnToMapButton.Click += leapHelpHidden;
         }
      
         private void button2_Click(object sender, RoutedEventArgs e)
@@ -138,6 +153,37 @@ namespace TwitterFind
              Console.WriteLine(url);
              search_data = theController.download_search_json(url);
              theController.parse_json(search_data, MainMap);
-         }              
+         }
+         public void leapHelpVisible(object sender, RoutedEventArgs e)
+         {
+             LEAP_Motion_Help.Visibility = Visibility.Visible;
+             MainMap.Visibility = Visibility.Hidden;
+         }
+
+         public void leapHelpHidden(object sender, RoutedEventArgs e)
+         {
+             LEAP_Motion_Help.Visibility = Visibility.Hidden;
+             MainMap.Visibility = Visibility.Visible;
+         }
+         public void GestureHandler(GestureList gestures)
+         {
+             foreach (Gesture gesture in gestures)
+             {
+                 if (gesture.Type == Gesture.GestureType.TYPESCREENTAP)
+                 {
+                     Dispatcher.Invoke(() =>
+                     {
+                         MainMap.Zoom++;
+                     });
+                 }
+                 if (gesture.Type == Gesture.GestureType.TYPEKEYTAP)
+                 {
+                     Dispatcher.Invoke(() =>
+                     {
+                         MainMap.Zoom--;
+                     });
+                 }
+             }
+         }
      }   
 }

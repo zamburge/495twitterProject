@@ -43,6 +43,11 @@
             <TextBox x:Name="LongSearchText" HorizontalAlignment="Left" Height="31" Margin="10,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
             <Label x:Name="LongSearchLabel" Content="Longitude" HorizontalAlignment="Left" Height="31" Margin="115,172,0,0" VerticalAlignment="Top" Width="70"/>
         </Grid>
-
+        <Button x:Name="LeapHelpDisplayButton" Content="LEAP Motion help" HorizontalAlignment="Left" VerticalAlignment="Top" Width="186" Grid.Column="1" Margin="34,576,0,0"/>
+        <Canvas x:Name="LEAP_Motion_Help" HorizontalAlignment="Left" Height="599" VerticalAlignment="Top" Width="776" Margin="10,10,0,0" Visibility="Hidden">
+            <Button x:Name="ReturnToMapButton" Content="Return to Map" Canvas.Left="125" Canvas.Top="406" Width="150" Height="47"/>
+            <TextBlock Height="537" Canvas.Left="469" TextWrapping="Wrap" Canvas.Top="26" Width="276"><Run/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run FontSize="16" Text="Visualize this Quadrant map when using the LEAP Motion to better understand how the LEAP tracks your hands/fingers when using a 2 dimensional plane such as our map."/><LineBreak/><LineBreak/><Run FontSize="16" Text="Gestures for this application include:"/><LineBreak/><Run FontSize="16"/><LineBreak/><Run FontSize="16" Text="Screen Tap: Zoom-In function"/><LineBreak/><Run FontSize="16" Text="Act as if you're poking through the quadrant map to invoke the screen tap which will zoom the map in."/><LineBreak/><LineBreak/><Run FontSize="16" Text="Key Tap: Zoom-Out function"/><LineBreak/><Run FontSize="16" Text="Act as though you were pressing a key on an invisible keyboard to call the function which zooms the map out one level."/></TextBlock>
+            <Image Height="282" Canvas.Left="36" Canvas.Top="26" Width="413" Source="Resources/leapQuadrantsMap.png"/>
+        </Canvas>
     </Grid>
 </Window>
