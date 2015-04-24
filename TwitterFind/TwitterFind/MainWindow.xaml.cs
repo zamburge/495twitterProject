@@ -185,5 +185,32 @@ namespace TwitterFind
                  }
              }
          }
+
+        
+
+         private void Cluster_Button_Click(object sender, RoutedEventArgs e)
+         {
+             //clear Markers off map
+             var clear = MainMap.Markers.Where(p => p != null && p != currentMarker);
+             if (clear != null)
+             {
+                 for (int i = 0; i < clear.Count(); i++)
+                 {
+                     MainMap.Markers.Remove(clear.ElementAt(i));
+                     i--;
+                 }
+             }
+
+             json_data = theController.cluster_download_serialized_json_data();
+             theController.cluster_parse_json(json_data, MainMap);
+         }
+
+         
+
+         
+
+         
+
+         
      }   
 }

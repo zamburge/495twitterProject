@@ -35,7 +35,7 @@ namespace TwitterFind
         }
         public String download_serialized_json_data()
         {
-            var url = "http://enter77.ius.edu:3221/all?count=7500";
+            var url = "http://enter77.ius.edu:3221/all?count=10";
             using (var w = new WebClient())
             {
                 var json = string.Empty;
@@ -83,6 +83,91 @@ namespace TwitterFind
                 json = w.DownloadString(concat);
                 return json;
             }
+        }
+
+        public String cluster_download_serialized_json_data()
+        {
+            var url = "http://enter77.ius.edu:3221/bins?minct=200";
+            using (var w = new WebClient())
+            {
+                var json = string.Empty;
+                // attempt to download JSON data as a string
+                json = w.DownloadString(url);
+                return json;
+            }
+        }
+
+        public void cluster_parse_json(String json_data, GMapControl map)
+        {
+            DataSet dataset;
+            DataTable dataTable = null;
+            try
+            {
+                dataset = JsonConvert.DeserializeObject<DataSet>(json_data);
+                dataTable = dataset.Tables["BinnedTweets"];
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    double latitude = Convert.ToDouble(row["lng"]);
+                    double longitude = Convert.ToDouble(row["lat"]);
+                    double count = (Convert.ToDouble(row["count"]));
+
+
+                    GMapMarker marker = new GMapMarker(new PointLatLng(latitude, longitude));
+                    marker.ZIndex = int.MaxValue;
+                    Ellipse el = new Ellipse();
+
+                    if (count <= 1000)
+                    {
+                        el.Height = 2;
+                        el.Width = 2;
+                    }
+
+                    if (count >= 1001 && count <= 3000)
+                    {
+                        el.Height = 4;
+                        el.Width = 4;
+                    }
+
+                    if (count >= 3001 && count <= 5000)
+                    {
+                        el.Height = 6;
+                        el.Width = 6;
+                    }
+
+                    if (count >= 5001 && count <= 10000)
+                    {
+                        el.Height = 8;
+                        el.Width = 8;
+                    }
+
+                    if (count >= 10001 && count <= 20000)
+                    {
+                        el.Height = 10;
+                        el.Width = 10;
+                    }
+
+                    if (count >= 20001 && count <= 40000)
+                    {
+                        el.Height = 12;
+                        el.Width = 12;
+                    }
+
+                    if (count > 40000)
+                    {
+                        el.Height = 14;
+                        el.Width = 14;
+                    }
+                    
+                    el.Fill = Brushes.Black;
+                    marker.Shape = el;
+                    map.Markers.Add(marker);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
 
         
